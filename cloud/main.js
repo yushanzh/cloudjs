@@ -94,13 +94,13 @@ AV.Cloud.define("abtesting",function(request,respone){
           response.error("Query Error");
       }
       var object = results[0];
-      var shareA = object['shareA'];
+      var shareA = object.get('shareA');
       var rand = Math.random()*100;
       response.success(rand+","+shareA);
       if(0<=rand && rand<shareA){
-          response.success('{"expname":"A","share":"'+object['shareA']+'","pipehight":"'+ object['pipehightA']+'"}');
+          response.success('{"expname":"A","share":"'+object.get('shareA')+'","pipehight":"'+ object.get('pipehightA')+'"}');
       }else{
-        response.success('{"expname":"B","share":"'+object['shareB']+'","pipehight":"'+ object['pipehightB']+'"}');
+        response.success('{"expname":"B","share":"'+object.get('shareB')+'","pipehight":"'+ object.get('pipehightB')+'"}');
       }
     },
    error:function(error) {
