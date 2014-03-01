@@ -65,7 +65,8 @@ AV.Cloud.define("getApp", function(request, response) {
         var rand = Math.random()*100;
         //response.success(rand+","+shareA);
         if(0<=rand && rand<shareA){
-            response.success("{\"expname\":\"A\",\"share\":\""+object.get("shareA")+"\"}");
+            response.success(rand+","+shareA);
+            //response.success("{\"expname\":\"A\",\"share\":\""+object.get("shareA")+"\"}");
         }
       };
     },
