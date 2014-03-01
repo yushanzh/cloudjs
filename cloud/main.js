@@ -90,29 +90,29 @@ AV.Cloud.define("getArmors", function(request, response) {
   });
 });
 
-AV.Cloud.define("abtesting",function(request,respone){
-    var query = new AV.Query("App");
-    query.equalTo("app", "flappy bird");
-    query.find({
-     success:function(results) {
-      var len = results.length;
-      if(len <1){
-          response.error("Query Error");
-      }
-      var object = results[0];
-      var shareA = object.get('shareA');
-      var rand = Math.random()*100;
-      response.success(rand+","+shareA);
-      if(0<=rand && rand<shareA){
-          response.success('{"expname":"A","share":"'+object.get('shareA')+'","pipehight":"'+ object.get('pipehightA')+'"}');
-      }else{
-        response.success('{"expname":"B","share":"'+object.get('shareB')+'","pipehight":"'+ object.get('pipehightB')+'"}');
-      }
+
+AV.Cloud.define("abtesting", function(request, response) {
+  var query = new AV.Query("App");
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        //response.success(results[0]);
+        var object = results[0];
+        var shareA = object.get('shareA');
+        var rand = Math.random()*100;
+        //response.success(rand+","+shareA);
+        if( (0<=rand) && (rand<shareA)){
+            response.success('{"expname":"A","share":"'+object.get('shareA')+'","pipehight":"'+ object.get('pipeheightA')+'"}');
+        }else{
+            response.success('{"expname":"B","share":"'+object.get('shareB')+'","pipehight":"'+ object.get('pipeheightB')+'"}');
+
+        }
+      };
     },
-   error:function(error) {
-    response.error("Error: " + error.code + " " + error.message);
-   }});
-    
+    error: function() {
+      response.error("movie lookup failed");
+    }
+  });
 });
 
 
