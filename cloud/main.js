@@ -82,8 +82,8 @@ AV.Cloud.define("getArmors", function(request, response) {
 
 AV.Cloud.define("abtesting",function(request,respone){
     var query = new AV.Query("App");
-    query.equalTo("app", "flappy bird");
-    success: function(results) {
+    query.equalTo("app", "flappy bird").then(
+     function(results) {
       var len = results.length;
       if(len <1){
           alert("Query Error");
@@ -97,9 +97,9 @@ AV.Cloud.define("abtesting",function(request,respone){
         return '{"expname":"B","share":"'+object['shareB']+'","pipehight":"'+ object['pipehightB']+'"}';
       }
     },
-   error: function(error) {
+   function(error) {
     alert("Error: " + error.code + " " + error.message);
-   }
+   })
 
     
 });
