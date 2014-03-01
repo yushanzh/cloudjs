@@ -54,8 +54,8 @@ AV.Cloud.define("averageStars", function(request, response) {
   });
 });
 
-AV.Cloud.define("getArmor", function(request, response) {
-  var query = new AV.Query("Armor");
+AV.Cloud.define("getApp", function(request, response) {
+  var query = new AV.Query("App");
   query.find({
     success: function(results) {
       if (results.length > 0) {
